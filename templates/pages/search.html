@@ -1,6 +1,17 @@
 {% extends 'pages/base.html' %}
 
 {% block content %}
-    <h1>SEARCH FUNCTION</h1>
-    <p>Your results: {{ results }}</p>
+    <h2>SEARCH FUNCTION</h2>
+    
+    <form method="get">
+        <label for="searchVal" name="searchVal">Search For A Location</label>
+        <input type="text" name="searchVal" id="searchVal">
+        <button type="submit">Search</button>
+    </form>
+
+    <p>
+        Your results are: {{ searchResult }}
+    </p>
+   
+
 {% endblock content %}
