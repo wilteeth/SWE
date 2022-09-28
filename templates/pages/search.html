@@ -9,9 +9,27 @@
         <button type="submit">Search</button>
     </form>
 
-    <p>
-        Your results are: {{ searchResult }}
-    </p>
+    {% if searchResult %}
+        <p>
+            Your results are:
+            <br> <br> <br>
+            Items found: {{ searchResult.found }}
+            <hr>
+            Number of pages: {{ searchResult.totalNumPages }}
+            <hr>
+            Page Number: {{ searchResult.pageNum }}
+            <hr>
+            {% for result in searchResult.results %}
+                Location: {{ result.searchVal }} <br>
+                Block Number: {{ result.BLK_NO }} <br>
+                Road Name: {{ result.ROAD_NAME }} <br>
+                Building: {{ result.BUILDING }} <br>
+                Address: {{ result.ADDRESS }} <br>
+                Postal: {{ result.POSTAL }}
+                <hr>
+            {% endfor %}
+        </p>
+    {% endif %}
    
 
 {% endblock content %}

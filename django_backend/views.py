@@ -1,5 +1,6 @@
 from django.shortcuts import render
 import requests
+import json
 
 def search(request):
     """
@@ -21,4 +22,4 @@ def search(request):
     else:
         searchResult = {}
 
-    return render(request, 'pages/search.html', searchResult)
+    return render(request, 'pages/search.html', {'searchResult': searchResult})
