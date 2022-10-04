@@ -23,3 +23,4 @@ def search(request):
         searchResult = {}
 
     return render(request, 'pages/search.html', {'searchResult': searchResult})
+

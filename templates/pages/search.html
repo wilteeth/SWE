@@ -1,4 +1,5 @@
 {% extends 'pages/base.html' %}
+{% load static %}
 
 {% block content %}
     <h2>SEARCH FUNCTION</h2>
@@ -25,10 +26,19 @@
                 Road Name: {{ result.ROAD_NAME }} <br>
                 Building: {{ result.BUILDING }} <br>
                 Address: {{ result.ADDRESS }} <br>
-                Postal: {{ result.POSTAL }}
+                Postal: {{ result.POSTAL }} <br>
+                X-coordinate: {{ result.X }} <br>
+                Y-coordinate: {{ result.Y }} <br>
+                Latitude: {{ result.LATITUDE }} <br>
+                Longitude: {{ result.LONGITUDE }} <br>
+
+                <img src="https://developers.onemap.sg/commonapi/staticmap/getStaticImage?layerchosen=default&lat={{result.LATITUDE}}&lng={{result.LONGITUDE}}&zoom=17&height=512&width=512">
+
                 <hr>
             {% endfor %}
         </p>
+
+        <script src="{% static '/js/map.js' %}"></script>
     {% endif %}
    
 
