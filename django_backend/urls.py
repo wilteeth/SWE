@@ -17,11 +17,14 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.generic.base import TemplateView
 from . import views
+from rest_framework.authtoken import views
 
 
 urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('', TemplateView.as_view(template_name='pages/index.html'), name='index'),
     path('admin/', admin.site.urls),
-    path('search/', views.search, name='search'),
+    # path('search/', views.search, name='search'),
+    path('accounts/', include('accounts.urls')),
+    path('api-token-auth', views.obtain_auth_token),
 ]
