@@ -4,9 +4,9 @@ import './MLAlgo.css';
 function MLAlgo() {
   return (
     <div className='MLAlgo'>
-      <div className='Outer'>
+      {/* <div className='Outer'>
         <img className='ML_bg' src='https://thedatacompany.com/wp-content/uploads/2020/06/June-Blog-1500x960.jpg'></img>
-      </div>
+      </div> */}
       <br></br>
       <div className='Inner'>
         <h1>About our Algorithm</h1>
@@ -19,7 +19,7 @@ function MLAlgo() {
           </div>
           <br></br>
           <div>
-              <img className='MLAlgo_Image' src='images/img-10.jpg' alt='just-an-image'></img>
+              <img className='MLAlgo_Image' src='images/img-10.jpg' alt='ML Graph Image'></img>
           </div>
           <div className='MLAlgo_Information'>
           <br></br>

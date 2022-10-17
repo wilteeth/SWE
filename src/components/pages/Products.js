@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../App.css';
+import ContactUs from '../ContactUs';
 
 export default function Products() {
-  return <h1 className='products'>PRODUCTS</h1>;
+  return <ContactUs />;
 }

@@ -6,6 +6,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import MLAlgorithm from './components/pages/MLAlgorithm';
 import Products from './components/pages/Products';
 import SignUp from './components/pages/SignUp';
+import SignUpProper from './components/pages/SignUpProper';
+import Pwordreset from './components/pages/Pwordreset';
 
 
 function App() {
@@ -18,6 +20,8 @@ function App() {
           <Route path='/MLAlgorithm' component={MLAlgorithm} />
           <Route path='/products' component={Products} />
           <Route path='/sign-up' component={SignUp} />
+          <Route path='/signupproper' component={SignUpProper} />
+          <Route path='/pwordreset' component={Pwordreset} />
         </Switch>
       </Router>
     </>

@@ -155,4 +155,9 @@
     color: #242424;
     transition: 250ms;
   }
+
+  .loginbutton{
+    font-weight: 900;
+    font-size: 8rem;
+  }
 }
