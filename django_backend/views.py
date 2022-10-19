@@ -1,6 +1,7 @@
 from django.shortcuts import render
 import requests
 import json
+from django.db import connections
 
 def search(request):
     """
@@ -19,8 +20,17 @@ def search(request):
         response = requests.get(url=url)
     
         searchResult = response.json()
+
+        with connections['flats'].cursor() as cursor:
+            cursor.execute('SELECT block, street_name, flat_type, PredictedPrice FROM "all_flat" WHERE town LIKE "%{searchVal}%" COLLATE NOCASE LIMIT 10'.format(searchVal=searchVal))
+
+            results = cursor.fetchall()
+
+            for row in results:
+                print(row)
     else:
         searchResult = {}
+
 
     return render(request, 'pages/search.html', {'searchResult': searchResult})
 
