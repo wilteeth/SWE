@@ -9,7 +9,11 @@ function Body() {
             <div className="signup-form">
                 <form>
                     <div className="input-group">
-                        <label>Full Name:</label>
+                        <label>First Name:</label>
+                        <input type="text" />
+                    </div>
+                    <div className="input-group">
+                        <label>Last Name:</label>
                         <input type="text" />
                     </div>
                     <div className="input-group">
@@ -20,12 +24,8 @@ function Body() {
                         <label>Password:</label>
                         <input type="password" />
                     </div>
-                    <div className="input-group">
-                        <label>Confirm Password:</label>
-                        <input type="password" />
-                    </div>
                     <div class="input-group">
-                        <button type="submit" class="button">Log In</button>
+                        <button type="submit" class="button">Sign Up</button>
                     </div>
                 </form>
             </div>
