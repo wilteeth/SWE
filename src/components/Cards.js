@@ -1,51 +1,76 @@
 import React from 'react';
 import './Cards.css';
-import CardItem from './CardItem';
+import Records from '../flatData.json'
+
+/*
+{ 
+  Records.map (record {
+    return(
+
+    )
+  })
+}
+*/ 
 
 function Cards() {
   return (
-    <div className='cards'>
-      <h1>Check out these EPIC Destinations!</h1>
-      <div className='cards__container'>
-        <div className='cards__wrapper'>
-          <ul className='cards__items'>
-            <CardItem
-              src='images/img-9.jpg'
-              text='Explore the hidden waterfall deep inside the Amazon Jungle'
-              label='Adventure'
-              path='/services'
-            />
-            <CardItem
-              src='images/img-2.jpg'
-              text='Travel through the Islands of Bali in a Private Cruise'
-              label='Luxury'
-              path='/services'
-            />
-          </ul>
-          <ul className='cards__items'>
-            <CardItem
-              src='images/img-3.jpg'
-              text='Set Sail in the Atlantic Ocean visiting Uncharted Waters'
-              label='Mystery'
-              path='/services'
-            />
-            <CardItem
-              src='images/img-4.jpg'
-              text='Experience Football on Top of the Himilayan Mountains'
-              label='Adventure'
-              path='/products'
-            />
-            <CardItem
-              src='images/img-8.jpg'
-              text='Ride through the Sahara Desert on a guided camel tour'
-              label='Adrenaline'
-              path='/sign-up'
-            />
-          </ul>
+    <div className = 'wrapper_card'>  
+      { 
+        Records && Records.map (record => {
+        return(
+            
+            <div className='cards'>
+            <img className='cards__img' src = '/images/homewhite.png' alt="image"/>
+            <div className='cards__body'>
+              <p className = 'cards__predictedprice'> The predicted price is: ${record.PredictedPrice} </p>
+              <p className = 'cards__description'>{record.flat_type} - {record.block} {record.street_name}     </p>
+              <button className = 'cards__btn'> Add to Favourite </button>
+            </div>
+            </div>
+            )
+          })
+        }
         </div>
+
+  );
+}
+
+/*
+function Cards(props) {
+  return (
+    <div className = 'wrapper_card'>
+    <div className='cards'>
+            <div className = 'box'>
+            <img src = {props.img} className='cards_img'/>
+            <div className='cards__body'>
+              <p className = 'cards__predictedprice'> The predicted price is: xxxxx </p>
+              <p className = 'cards__bedroom'>xxxxx    </p>
+              <p className = 'cards__block'> xxxxx</p>
+              <p className = 'cards__street'> xxxxx </p>
+              <button className = 'cards__btn'> Add to Favourite </button>
+            </div>
+            </div>
+        </div>
+        </div>
+  );
+}
+*/
+/*
+function Cards(props) {
+  return (
+    
+    <div className='cards'>
+      <img src = {props.img} className='cards_img'/>
+      <div className='cards__body'>
+        <h2 className = 'cards__predictedprice'> The predicted price is: {props.predictedprice} </h2>
+        <h2 className = 'cards__bedroom'>{props.beedroom}       </h2>
+        <h2 className = 'cards__block'> {props.block}</h2>
+        <h2 className = 'cards__street'> {props.street} </h2>
+        <button className = 'cards__btn'> Add to Favourite </button>
       </div>
     </div>
   );
-}
+}*/
+
 
 export default Cards;

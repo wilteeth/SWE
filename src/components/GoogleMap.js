@@ -5,6 +5,7 @@ import PlacesAutocomplete, {
   getLatLng,
 } from 'react-places-autocomplete';
 import './GoogleMap.css';
+import Cards from './Cards';
 
 
 export class MapContainer extends Component {
@@ -43,21 +44,31 @@ export class MapContainer extends Component {
   };
  
   render() {
+    /*Added this to fit map into container */
+    const containerStyle = {
+      position: 'relative',  
+      width: '100%',
+      height: '100%'
+    }
     return (
-      <div id='googleMaps'>
-        <PlacesAutocomplete
+      
+      <div class = 'main-page-wrapper'>
+        <div class = 'row'>
+          <div class = 'column-30'>
+
+          <PlacesAutocomplete
           value={this.state.address}
           onChange={this.handleChange}
           onSelect={this.handleSelect}
         >
           {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-            <div>
               <div className='SB_suggestions'>
                 <input 
                   {...getInputProps({
                     placeholder: 'Search Places ...',
                     className: 'location-search-input',
                   })}
+                
                 />
                 <div className="autocomplete-dropdown-container">
                   {loading && <div>Loading...</div>}
@@ -67,8 +78,8 @@ export class MapContainer extends Component {
                       : 'suggestion-item';
                     // inline style for demonstration purpose
                     const style = suggestion.active
-                      ? { backgroundColor: '#fafafa', cursor: 'pointer' }
-                      : { backgroundColor: '#ffffff', cursor: 'pointer' };
+                      ? { backgroundColor: '#007FFF', cursor: 'pointer' /*Hover*/}
+                      : { backgroundColor: '#ffffff', cursor: 'pointer',};
                     return (
                       <div
                         {...getSuggestionItemProps(suggestion, {
@@ -80,32 +91,54 @@ export class MapContainer extends Component {
                       </div>
                     );
                   })}
-                </div>
               </div>
+              <div className='main_card'></div>
+              <Cards/>
             </div>
           )}
         </PlacesAutocomplete>
 
-        <div className='map'>
-          <Map
-            google={this.props.google}
-            initialCenter={{
-              lat: this.state.mapCenter.lat,
-              lng: this.state.mapCenter.lng
-            }}
-            center={{
-              lat: this.state.mapCenter.lat,
-              lng: this.state.mapCenter.lng
-            }}
-          >
-            <Marker
-              position={{
-                lat: this.state.mapCenter.lat,
-                lng: this.state.mapCenter.lng
-              }} />
-          </Map>
+          </div>
+          {/* change the column to 70px */}
+          <div class = 'column-70'> 
+            <div className="map-container">
+                <Map
+                /*Added container style to fit map into container */
+                
+                  containerStyle={containerStyle}
+                  google={this.props.google}
+                  initialCenter={{
+                    lat: this.state.mapCenter.lat,
+                    lng: this.state.mapCenter.lng
+                  }}
+                  center={{
+                    lat: this.state.mapCenter.lat,
+                    lng: this.state.mapCenter.lng
+                  }}
+                >
+                  <Marker
+                    position={{
+                      lat: this.state.mapCenter.lat,
+                      lng: this.state.mapCenter.lng
+                    }} />
+                </Map>
+              </div>
+
+              {/* create container for ammenities! */}
+              <div className='amenities-container'>
+
+                {/* add ammnities here for responsive deisng */}
+                <p>The ammenities will go here and the page will still be responsive</p>  
+
+               </div>
+          </div> 
         </div>
       </div>
+      
+
+        
+
+        
      
     )
   }
