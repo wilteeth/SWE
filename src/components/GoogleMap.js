@@ -62,7 +62,6 @@ export class MapContainer extends Component {
           onSelect={this.handleSelect}
         >
           {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-            <div>
               <div className='SB_suggestions'>
                 <input 
                   {...getInputProps({
@@ -92,7 +91,6 @@ export class MapContainer extends Component {
                       </div>
                     );
                   })}
-                </div>
               </div>
               <div className='main_card'></div>
               <Cards/>
