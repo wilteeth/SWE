@@ -1,7 +1,15 @@
-from cProfile import label
+from numpy import source
 from rest_framework.serializers import ModelSerializer
 from django.contrib.auth import get_user_model, authenticate
 from rest_framework import serializers
+from .models import Favourite
+
+class FavouriteSerializer(ModelSerializer):
+    email = serializers.EmailField(source="user.email")
+    class Meta:
+        model = Favourite
+        fields = ('email', 'block', 'street_name', 'predictedprice', 'flat_type')
+
 
 class UserSerializer(ModelSerializer):
     class Meta:

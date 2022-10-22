@@ -67,3 +67,16 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     class Meta:
         ordering = ("email",)
+
+
+class Favourite(models.Model):
+    id = models.AutoField(primary_key=True)
+    email = User.email
+    block = models.IntegerField(blank=True, null=True)
+    street_name = models.TextField(blank=True, null=True)
+    predictedprice = models.IntegerField(db_column='PredictedPrice', blank=True, null=True)  # Field name made lowercase.
+    flat_type = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'favourite'

@@ -1,8 +1,8 @@
 from rest_framework import permissions
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .serializers import UserSerializer, LoginSerializer
-from .models import User
+from .serializers import UserSerializer, LoginSerializer, FavouriteSerializer
+from .models import User, Favourite
 from rest_framework.authentication import BasicAuthentication
 from rest_framework import generics, status
 from django.contrib.auth import login
@@ -36,3 +36,20 @@ class LoginView(APIView):
         login(request, user)
         return Response(None, status=status.HTTP_202_ACCEPTED)
 
+# Class based view for adding to favourites
+class FavouriteView(APIView):
+    def get(self, request):
+        try:
+            favourites = Favourite.objects.filter(email=request.user.email)
+        except:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        else:
+            serializer = FavouriteSerializer(favourites, many=True)
+            return Response(serializer.data)
+
+    def post(self, request):
+        serializer = FavouriteSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
