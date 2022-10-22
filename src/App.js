@@ -8,6 +8,7 @@ import Products from './components/pages/Products';
 import SignUp from './components/pages/SignUp';
 import SignUpProper from './components/pages/SignUpProper';
 import Pwordreset from './components/pages/Pwordreset';
+import contactussuccess from './components/pages/Contactussuccess';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path='/sign-up' component={SignUp} />
           <Route path='/signupproper' component={SignUpProper} />
           <Route path='/pwordreset' component={Pwordreset} />
+          <Route path='/contactsuccess' component={contactussuccess} />
         </Switch>
       </Router>
     </>

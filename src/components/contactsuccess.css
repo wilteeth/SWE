@@ -1,0 +1,32 @@
+#message{
+    color: white;
+    text-align: center;
+    margin-top: 15%;
+    font-size: 3em;
+}
+
+#message2{
+    color: white;
+    text-align: center;
+    font-size: 3em;
+}
+
+#linkposition{
+    margin-top: 5%;
+    text-align: center;
+}
+
+#return{
+    background-color: #C56C86;
+    border-radius: .5rem;
+    padding: 1rem 1.5rem;
+    color: white;
+    text-decoration: none;
+    font-size: .9rem;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    font-size: medium;
+    width: 96%;
+
+}

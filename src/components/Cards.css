@@ -5,6 +5,7 @@
   grid-template-columns: 1fr;
   justify-content: center;
   flex-direction: column;
+  color: white;
 
 }
 
@@ -34,35 +35,33 @@
   flex-grow: 1;
   align-items: center;
   justify-content: center;
-  color: white;
 }
 
 /* .card__bedroom */
 .cards__description {
   margin-bottom: 0.5rem;
-  text-align:center;;
+  margin-left: 1rem;
   flex-grow: 1;
 }
 /* .cards__block */
 .cards__predictedprice {
   margin-bottom: 0.5rem;
-  text-align:center;
+  margin-left: 1rem;
   flex-grow: 1;
 }
 
 .cards__btn {
   border: none;
   border-top: 1px solid #e2e8f0;
-  margin-top:0.5rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
   background-color: transparent;
   font-family: inherit;
   font-size: 1rem;
   font-weight: bold;
   color: inherit;
   width: 100%;
-
+  margin-bottom: 0.5rem;
+  margin-left: 0.5 rem;
+  margin-top: 0.5 rem;
   cursor:pointer;
 }
 cards__btn :hover {

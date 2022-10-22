@@ -5,6 +5,8 @@ body{
     margin: 0;
     background-color: #355C7D;
     font-family: Poppins, sans-serif;
+    display: flex;
+    flex-direction: column;
 }
 
 .contactus-form{
@@ -14,11 +16,34 @@ body{
     margin-right: 30%;
     padding: 2rem 4rem;
     border-radius: 20px;
-    font-size: 4rem;
     color: white;
 }
 
-.redirect{
+#contactus-message{
+    font-size: 4rem;
+}
+
+#contactus-button{
+    background-color: #C56C86;
+    border-radius: .5rem;
+    padding: 1rem 1.5rem;
+    color: inherit;
+    text-decoration: none;
+    font-size: .9rem;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    font-size: medium;
+    width: 96%;
+}
+
+#button-div{
+    margin: auto;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* .redirect{
     background-color: #C56C86;
     border-radius: .5rem;
     padding: 1rem 1.5rem;
@@ -35,4 +60,4 @@ body{
 #contactusnow{
     text-align: center;
     margin: auto;
-}
+} */
