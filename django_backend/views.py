@@ -2,6 +2,7 @@ from django.shortcuts import render
 import requests
 import json
 from django.db import connections
+import pandas as pd
 
 def search(request):
     """
@@ -24,10 +25,17 @@ def search(request):
         with connections['flats'].cursor() as cursor:
             cursor.execute('SELECT block, street_name, flat_type, PredictedPrice FROM "all_flat" WHERE town LIKE "%{searchVal}%" COLLATE NOCASE LIMIT 10'.format(searchVal=searchVal))
 
-            results = cursor.fetchall()
+            # results = cursor.fetchall()
 
-            for row in results:
-                print(row)
+            r = [dict((cursor.description[i][0], value) \
+               for i, value in enumerate(row)) for row in cursor.fetchall()]
+
+            result = json.dumps(r)
+
+            print(result)
+
+            
+
     else:
         searchResult = {}
 
