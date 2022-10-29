@@ -10,12 +10,12 @@
 }
 
 .cards {
-  box-shadow: 0 0 10px 5px #4f546c;
+  border: 5px solid black;
   border-radius: 0.2rem;
   min-width: 28rem;
   display: flex;
   flex-direction: row;
-  background-color: #090084;
+  background-color: #1c3041;
   font-size:large;
   
 }
