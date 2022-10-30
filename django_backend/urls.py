@@ -23,7 +23,7 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('', TemplateView.as_view(template_name='pages/index.html'), name='index'),
     path('admin/', admin.site.urls),
-    path('search/', views.search, name='search'),
+    path('api/search/', views.SearchView.as_view()),
     path('accounts/', include('accounts.urls')),
     path('api/comparison/', views.ComparisonView.as_view()),
 ]
