@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'accounts',
     'corsheaders',
     'rest_framework',
+    'django_backend',
 ]
 
 REST_FRAMEWORK = {
@@ -86,6 +87,9 @@ WSGI_APPLICATION = 'django_backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+"""
+THE DATABASE WITH FLAT INFORMATION IS ALIASED AS 'FLATS'. DEFAULT DATABASE IS THE ACCOUNTS DB.
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',

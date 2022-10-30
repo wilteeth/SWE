@@ -25,4 +25,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('search/', views.search, name='search'),
     path('accounts/', include('accounts.urls')),
+    path('api/comparison/', views.ComparisonView.as_view()),
 ]
