@@ -4,7 +4,7 @@ import CreatableSelect from "react-select/creatable";
 
 const Dropdown1 = () => {
   const [flatData, setFlatData] = useState([]);  // flatData is used later in the div section, setFlatData is used here
-  const url = 'https://mocki.io/v1/14e87ea4-36f1-4923-900b-cfebd3966421'; //Change URL to endpoint api
+  const url = 'https://mocki.io/v1/ec397210-3d68-4e76-87ba-ffde5812b2d5'; //Change URL to endpoint api
   async function pullJson(){
     const response = await fetch(url); // fetch the file url, but await it used to allow fetch to complete before putting it into variable response
     const responseData = await response.json() // We convert the response into a JSON object and store in reponse Data
@@ -54,24 +54,19 @@ const Dropdown1 = () => {
   const handleInputChange = (inputValue, actionMeta) => {
     console.log("handleInputChange", inputValue, actionMeta);
   };
-  return (
-      flatData.map (record => {  // NEED THIS line!!
-        const options = [
-          {label: record.name, color: "#FF8B00" },
-          {label: record.name, color: "#36B37E" },
-          {label: record.name, color: "#0052CC" },
-        ];
-        return(
-      <CreatableSelect
-        options={options}
-        onChange={handleChange}
-        onInputChange={handleInputChange}
-        styles={colorStyles} 
-        CreatableSelect placeholder={<div>Nearest MRT</div>} 
+  const [optioned, setoptions] = useState([]);
 
-        />
-      )
-    })
+
+  return (
+    <CreatableSelect
+      options = {flatData}
+      onChange={handleChange}
+      onInputChange={handleInputChange}
+      styles={colorStyles} 
+      CreatableSelect placeholder={<div>Nearest MRT</div>} 
+
+      />
   )
-  }
+}
+
 export default Dropdown1;
