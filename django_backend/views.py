@@ -1,4 +1,3 @@
-from re import X
 from django.shortcuts import render
 import requests
 import json
@@ -55,10 +54,15 @@ class ComparisonView(APIView):
             search_val = request.GET['search_val']
             flat_type = request.GET['flat_type']
 
-            queryset = models.AllFlat.objects.using('flats').filter(town__contains=search_val).values('predictedprice')[:1]
-            price = queryset[0]
-            result = json.dumps(price)
+            queryset = models.AllFlat.objects.using('flats').filter(town__contains=search_val, flat_type__contains=flat_type).values('predictedprice')[:1]
+            if not queryset:
+                return Response({})
+            else:
+                price = queryset[0]
+                result = json.dumps(price)
 
             return Response(result)
 
         return Response({})
+
+   
