@@ -45,6 +45,14 @@ def search(request):
 
     return render(request, 'pages/search.html', {'searchResult': searchResult})
 
+# class SearchView(APIView):
+#     def get(self, request):
+#         if 'search_val' in request.GET:
+#             search_val = request.GET['search_val']
+
+#             queryset = models.AllFlat.objects.using('flats').filter(town__contains=search_val).values('predictedprice')[:1]
+
+
 """
 Class based view for comparison function. Accepts 2 parameters: search_val from GoogleMaps searchbar, and flat_type from custom user select
 """
@@ -54,7 +62,7 @@ class ComparisonView(APIView):
             search_val = request.GET['search_val']
             flat_type = request.GET['flat_type']
 
-            queryset = models.AllFlat.objects.using('flats').filter(town__contains=search_val, flat_type__contains=flat_type).values('predictedprice')[:1]
+            queryset = models.AllFlat.objects.using('flats').filter(street_name__contains=search_val, flat_type__contains=flat_type).values('predictedprice')[:1]
             if not queryset:
                 return Response({})
             else:
