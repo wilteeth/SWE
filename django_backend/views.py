@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from . import models
@@ -13,7 +12,7 @@ class SearchView(APIView):
         if 'search_val' in request.GET:
             search_val = request.GET['search_val']
 
-            queryset = models.AllFlat.objects.using('flats').filter(street_name__contains=search_val).values('block', 'street_name', 'flat_type', 'storey_range', 'floor_area_sqm', 'flat_model', 'remaining_lease', 'predictedprice', 'likes')[:5]
+            queryset = models.AllFlat.objects.using('flats').filter(street_name__contains=search_val).values('id', 'block', 'street_name', 'flat_type', 'storey_range', 'floor_area_sqm', 'flat_model', 'remaining_lease', 'predictedprice', 'likes')[:5]
             if not queryset:
                 return Response({})
             else:
@@ -42,5 +41,27 @@ class ComparisonView(APIView):
             return Response(price, status=status.HTTP_200_OK, content_type='application/json')
 
         return Response({})
+
+
+
+class UpdateLikesView(APIView):
+    def get(self, request):
+        if 'id' in request.GET:
+            id = request.GET['id']
+
+            query = models.AllFlat.objects.using('flats').get(id=id)
+
+            if not query:
+                print("no query")
+                return Response({})
+            else:
+                query.likes = query.likes + 1
+                query.save(update_fields=["likes"])
+
+            return Response(query.likes, status=status.HTTP_200_OK, content_type='application/json')
+    
+        print("no param in request.GET")
+        return Response({})
+
 
    

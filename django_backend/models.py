@@ -5,7 +5,6 @@
 #   * Make sure each ForeignKey and OneToOneField has `on_delete` set to the desired behavior
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
-from email.policy import default
 from django.db import models
 
 
@@ -31,7 +30,8 @@ class AllFlat(models.Model):
     town_premium = models.IntegerField(blank=True, null=True)
     flat_model_premium = models.IntegerField(blank=True, null=True)
     predictedprice = models.FloatField(db_column='PredictedPrice', blank=True, null=True)  # Field name made lowercase.
-    likes = models.IntegerField(blank=False, null=False, default=0, editable=True)
+    likes = models.IntegerField()
+    id = models.AutoField(primary_key=True, null=False)
 
     class Meta:
         managed = False

@@ -26,4 +26,5 @@ urlpatterns = [
     path('api/search/', views.SearchView.as_view()),
     path('accounts/', include('accounts.urls')),
     path('api/comparison/', views.ComparisonView.as_view()),
+    path('api/likes/', views.UpdateLikesView.as_view()),
 ]
