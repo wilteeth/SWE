@@ -13,7 +13,7 @@ class SearchView(APIView):
         if 'search_val' in request.GET:
             search_val = request.GET['search_val']
 
-            queryset = models.AllFlat.objects.using('flats').filter(street_name__contains=search_val).values('block', 'street_name', 'flat_type', 'storey_range', 'floor_area_sqm', 'flat_model', 'remaining_lease', 'predictedprice')[:5]
+            queryset = models.AllFlat.objects.using('flats').filter(street_name__contains=search_val).values('block', 'street_name', 'flat_type', 'storey_range', 'floor_area_sqm', 'flat_model', 'remaining_lease', 'predictedprice', 'likes')[:5]
             if not queryset:
                 return Response({})
             else:
