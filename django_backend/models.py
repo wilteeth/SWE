@@ -5,8 +5,8 @@
 #   * Make sure each ForeignKey and OneToOneField has `on_delete` set to the desired behavior
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
+from email.policy import default
 from django.db import models
-
 
 
 class AllFlat(models.Model):
@@ -21,7 +21,7 @@ class AllFlat(models.Model):
     lease_commence_date = models.IntegerField(blank=True, null=True)
     remaining_lease = models.IntegerField(blank=True, null=True)
     resale_price = models.IntegerField(blank=True, null=True)
-    combined_blk_street_name = models.TextField(primary_key=True)
+    combined_blk_street_name = models.TextField(blank=True, null=True)
     onemapapi_name = models.TextField(db_column='oneMapAPI_Name', blank=True, null=True)  # Field name made lowercase.
     time_to_city = models.FloatField(blank=True, null=True)
     nearest_mall = models.IntegerField(blank=True, null=True)
@@ -31,6 +31,7 @@ class AllFlat(models.Model):
     town_premium = models.IntegerField(blank=True, null=True)
     flat_model_premium = models.IntegerField(blank=True, null=True)
     predictedprice = models.FloatField(db_column='PredictedPrice', blank=True, null=True)  # Field name made lowercase.
+    likes = models.IntegerField(blank=False, null=False, default=0, editable=True)
 
     class Meta:
         managed = False
