@@ -27,4 +27,5 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('api/comparison/', views.ComparisonView.as_view()),
     path('api/likes/', views.UpdateLikesView.as_view()),
+    path('api/airport/', views.Airport.as_view()),
 ]
