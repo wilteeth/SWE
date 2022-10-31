@@ -23,9 +23,11 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('', TemplateView.as_view(template_name='pages/index.html'), name='index'),
     path('admin/', admin.site.urls),
-    path('api/search/', views.SearchView.as_view()),
     path('accounts/', include('accounts.urls')),
+    #api urls
+    path('api/search/', views.SearchView.as_view()),
     path('api/comparison/', views.ComparisonView.as_view()),
     path('api/likes/', views.UpdateLikesView.as_view()),
     path('api/airport/', views.Airport.as_view()),
+    path('api/atm/', views.ATM.as_view()),
 ]
