@@ -30,4 +30,5 @@ urlpatterns = [
     path('api/likes/', views.UpdateLikesView.as_view()),
     path('api/airport/', views.Airport.as_view()),
     path('api/atm/', views.ATM.as_view()),
+    path('api/buses/', views.Buses.as_view()),
 ]

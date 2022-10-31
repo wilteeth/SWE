@@ -236,3 +236,83 @@ class ATM(APIView):
             return Response(nearby_buses, status=status.HTTP_200_OK, content_type='application/json')
 
         return Response({})
+
+
+class Buses(APIView):
+    def get(self, request):
+        if 'search_val' in request.GET:
+            API_KEY = 'AIzaSyAJy82TVP3JryIg444dv-DfcDUnFoG-tt4'
+            map_client = googlemaps.Client(API_KEY)
+
+            address = 'tampines street 45' #this is the location u wish to search
+            geocode = map_client.geocode(address=address)
+            (lat, lng) = map(geocode[0]['geometry']['location'].get, ('lat', 'lng'))
+
+            input_lat = lat
+            input_lng = lng
+
+            search_string = 'bus stop' #this is the value which you are gna be searching
+            distance = 0.2 * 1_609.344  #this is the radius in miles that you wanna search
+            business_list = [] 
+
+
+            response = map_client.places_nearby(
+                location=(lat, lng),
+                keyword=search_string,
+                radius=distance
+            )   
+
+
+            business_list.extend(response.get('results'))
+            next_page_token = response.get('next_page_token')
+
+            while next_page_token:
+                time.sleep(2)
+                response = map_client.places_nearby(
+                    location=(lat, lng),
+                    keyword=search_string,
+                    radius=distance,
+                    page_token=next_page_token
+                )   
+                business_list.extend(response.get('results'))
+                next_page_token = response.get('next_page_token')
+
+            df = pd.DataFrame(business_list)
+            df.drop(df.columns[[0, 2, 3, 4, 6, 7,8,9,10,11,12,13,14]], axis=1, inplace=True)
+            df['Latitude'] = df.loc[:, 'geometry']
+            df['Longitude'] = df.loc[:, 'geometry']
+            df.drop(df.columns[[0]], axis=1, inplace=True)
+
+            i=0
+            name = []
+            latitude = []
+            longitude = []
+            calculated_dist = []
+            while i < 3: 
+                name.append(df.at[i, 'name'])
+                x = df.at[i,'Latitude']
+                lat_lng = x["location"]
+                latitude.append(lat_lng["lat"])
+                longitude.append(lat_lng["lng"])
+                coord1 = (lat_lng["lat"],lat_lng["lng"])
+                coord2 = (input_lat, input_lng)
+                calculated_dist.append(geodesic(coord1,coord2).km)
+                i = i + 1
+
+            i = 0
+
+            nearby_bus = {"names":name, "latitudes": lat, "longitudes":lng, "distance":calculated_dist}
+            buses_df = pd.DataFrame(nearby_bus)
+            buses_df = buses_df.sort_values(by=['distance'], ascending=True)
+
+            nearby_buses = [1,2,3]
+
+            while i < 3:
+                name_dist = buses_df.iloc[i,0] + ', ' + str(round(buses_df.iloc[i,3], 3)) + 'km'
+                nearby_buses[i] = {"label":name_dist, "latitude": buses_df.iloc[i,1], "longitude": buses_df.iloc[i,2], 
+                "distance":round(buses_df.iloc[i,3], 3)}
+                i = i+1
+
+            return Response(nearby_buses, status=status.HTTP_200_OK, content_type='application/json')
+
+        return Response({})
