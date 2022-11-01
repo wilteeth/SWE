@@ -28,10 +28,12 @@ urlpatterns = [
     path('api/search/', views.SearchView.as_view()),
     path('api/comparison/', views.ComparisonView.as_view()),
     path('api/likes/', views.UpdateLikesView.as_view()),
+    #amenities urls
     path('api/airport/', views.Airport.as_view()),
     path('api/atm/', views.ATM.as_view()),
     path('api/buses/', views.Buses.as_view()),
     path('api/clinic/', views.Clinic.as_view()),
     path('api/grocery/', views.Grocery.as_view()),
     path('api/hospital/', views.Hospital.as_view()),
+    path('api/mall/', views.Mall.as_view()),
 ]
