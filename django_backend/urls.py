@@ -37,4 +37,5 @@ urlpatterns = [
     path('api/hospital/', views.Hospital.as_view()),
     path('api/mall/', views.Mall.as_view()),
     path('api/mrt/', views.MRT.as_view()),
+    path('api/restaurant/', views.Restaurant.as_view()),
 ]
