@@ -1,0 +1,107 @@
+#comparebody{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#compareheader{
+    text-align: center;
+    margin-top: 5%;
+    font-size: 3.5em;
+    color: white;
+}
+
+#imagemid{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+#comparefunction{
+    display: flex;
+    flex-direction: row;
+}
+
+#comparefunction1{
+    display: flex;
+    flex-direction: column;
+    width: 49em;
+}
+
+#comparefunction2{
+    display: flex;
+    flex-direction: column;
+    width: 49em;
+}
+
+#image1{
+    margin: auto;
+}
+
+#compareform1{
+    color: white;
+    background-color: black;
+    max-width: 40%;
+    padding: 2rem;
+    border-radius: 20px;
+    margin: auto;
+    font-size: 1.5em;
+}
+
+#dropdownbar{
+    color: black;
+    z-index: 900;
+}
+
+#locationsearch1{
+    width: 100%;
+    height: 50px;
+    color: black;
+    font-size: 1em;
+    padding: 10px;
+    border-radius: 5px;
+    position: relative;
+}
+
+#locationsearch2{
+    width: 100%;
+    height: 50px;
+    color: black;
+    font-size: 1em;
+    padding: 10px;
+    border-radius: 5px;
+    position: relative;
+}
+
+#suggestionbox{
+    border-radius: 5px;
+}
+
+#suggestionindiv{
+    position: absolute;
+    background-color: grey;
+    border-radius: 5px;
+    padding: 1px;
+    z-index: 950;
+}
+
+#pricenow{
+    color: rgb(71, 184, 1);
+}
+
+#header{
+    margin-top: 10px;
+}
+
+#givemetheprice{
+    background-color: #C56C86;
+    border-radius: .5rem;
+    padding: .75rem 1.5rem;
+    color: inherit;
+    text-decoration: none;
+    font-size: .9rem;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    margin-top: 15px;
+    
+}
