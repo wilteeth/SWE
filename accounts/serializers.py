@@ -2,12 +2,21 @@ from rest_framework.serializers import ModelSerializer
 from django.contrib.auth import get_user_model, authenticate
 from rest_framework import serializers
 from .models import Favourite
+from djoser.serializers import UserCreateSerializer
+
+class UserCreateSerializer(UserCreateSerializer):
+    class Meta:
+        User = get_user_model()
+        model = User
+        fields = ('email', 'first_name', 'last_name', 'is_superuser', 'password')
+
 
 class FavouriteSerializer(ModelSerializer):
     email = serializers.EmailField(source="user.email")
     class Meta:
         model = Favourite
         fields = ('email', 'block', 'street_name', 'predictedprice', 'flat_type')
+        
 
 
 class UserSerializer(ModelSerializer):

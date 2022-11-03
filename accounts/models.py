@@ -10,12 +10,11 @@ from django.utils import timezone
 Overrides django's base user model
 """
 class UserManager(BaseUserManager):
-    def _create_user(
+    def create_user(
         self, 
         email,
         first_name,
         last_name,
-        is_superuser,
         password=None,
     ):
         email = self.normalize_email(email)
@@ -23,15 +22,15 @@ class UserManager(BaseUserManager):
             email = email,
             first_name = first_name,
             last_name = last_name,
-            is_staff = is_superuser,
-            is_superuser = is_superuser,
         )
         user.set_password(password)
         user.save(using=self._db)
         return user
 
     def create_superuser(self, email, first_name, last_name, password):
-        return self._create_user(email, first_name, last_name, True, password)
+        return self.create_user(email, first_name, last_name, password)
+
+
 
 
 
